@@ -1,3 +1,7 @@
+"""
+
+"""
+
 import os
 import sys
 import socket
@@ -432,8 +436,8 @@ def main():
 ----------------------------------------------------------------
 ready to enter commands and messages.
 commands:
-  join      : join to server group
-  leave     : leave the server group
+  join      : join to server group (monitor only!)
+  leave     : leave the server group (monitor only!)
   end       : terminate server app
 ----------------------------------------------------------------\
 	'''
@@ -443,9 +447,11 @@ commands:
 		if msg == 'end':
 			shutdown = True
 			break
-		else:
+		elif msg in ['join', 'leave']:
 			q.put(msg)
-
+		else:
+			pass
+			
 	# wait until all threads terminate
 	t1.join() 
 	t2.join()
