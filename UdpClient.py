@@ -32,7 +32,7 @@ def send_mc(msg):
 		sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
 		print(f'send multicast msg: {msg}', flush=True)
-		sock.sendto(msg.encode(), mc_addr)  
+		sock.sendto(msg.encode(), mc_addr)  # encoding defaults to 'utf-8'
 
 		try:
 			msg, addr = sock.recvfrom(128)
